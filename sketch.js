@@ -23,8 +23,12 @@ function mousePressed() {
     
     queue = nextQueue
 
-}
+    allCircles.forEach((circleItem) => {
+        circleItem.show()
+    })
 
+}
+let flag = false;
 function setup() {
     createCanvas(600, 600);
 
@@ -37,10 +41,28 @@ function setup() {
     allCircles.push(c3)
 
     queue.push(new Triplet(c1,c2,c3))
+
+    for(let i = 0; i < 15; i ++) {
+        mousePressed()
+    }
+    flag = true
+
 }
 
 function draw() {
+    background(200)
+    if(!flag) {
+        allCircles.forEach((circleItem) => {
+            circleItem.show()
+    
+        })
+
+        return 
+    }
+    
+    
     allCircles.forEach((circleItem) => {
-        circleItem.show()
+        circleItem.move()
+
     })
 }
